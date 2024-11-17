@@ -99,8 +99,3 @@ new SimpleLightbox('.gallery a', {
 
 
 
-
-console.log(SimpleLightbox);
-
-
-
