@@ -12,7 +12,7 @@ form.addEventListener("input", handleInput);
 form.addEventListener("submit", handleSubmit);
 
 function handleInput(event) {
-    formData[event.target.name] = event.target.value;
+    formData[event.target.name] = event.target.value.trim();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
@@ -28,9 +28,15 @@ function handleSubmit(event) {
     if (!email || !message) {
         alert("Fill please all fields");
         return;
-    }
+    
+}
+
+    console.log("Submitted data:", formData);
+
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
+    formData.email = "";
+    formData.message = "";
 }
 
 
@@ -42,5 +48,7 @@ function populateText() {
 
         form.email.value = data.email || "";
         form.message.value = data.message || "";
+        formData.email = data.email || "";
+        formData.message = data.message || "";
         }
     }
